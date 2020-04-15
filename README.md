@@ -14,10 +14,14 @@ remote_receiver:
 5.	Upload the YAML to the node
 6.	When uploaded go to “Show Logs” of the node
 7.	When everything is correct, you can press a button on the IR-remote and capture its raw-data. Example output when I press the MUTE-button:
+```
 [17:00:57][D][remote.raw:028]: Received Raw: -4514, 4526, -549, 1698, -549, 1697, -549, 1698, -549, 577, -546, 576, -548, 575, -548, 575, -549, 574, -549, 1699, -549, 1698, -549, 1699, -547, 576, -548, 576, -548, 575, -548, 576, -547, 575, -548, 1699, -549, 1696, -551, 1698, -548, 
 [17:00:57][D][remote.raw:041]:   1698, -549, 576, -547, 578, -546, 575, -548, 577, -547, 576, -547, 575, -549, 577, -547, 575, -549, 1699, -548, 1699, -548, 1701, -546, 1698, -548
+```
 8.	As you see it is not possible for ESPHome to put all the raw-data on one string, so we need to divide it:
-“-4514, 4526, -549, 1698, -549, 1697, -549, 1698, -549, 577, -546, 576, -548, 575, -548, 575, -549, 574, -549, 1699, -549, 1698, -549, 1699, -547, 576, -548, 576, -548, 575, -548, 576, -547, 575, -548, 1699, -549, 1696, -551, 1698, -548, 1698, -549, 576, -547, 578, -546, 575, -548, 577, -547, 576, -547, 575, -549, 577, -547, 575, -549, 1699, -548, 1699, -548, 1701, -546, 1698, -548”
+```
+-4514, 4526, -549, 1698, -549, 1697, -549, 1698, -549, 577, -546, 576, -548, 575, -548, 575, -549, 574, -549, 1699, -549, 1698, -549, 1699, -547, 576, -548, 576, -548, 575, -548, 576, -547, 575, -548, 1699, -549, 1696, -551, 1698, -548, 1698, -549, 576, -547, 578, -546, 575, -548, 577, -547, 576, -547, 575, -549, 577, -547, 575, -549, 1699, -548, 1699, -548, 1701, -546, 1698, -548
+```
 9.	Now we got the raw-data of the MUTE-button we can assign a binary-sensor to it so Home Assistant will recognize it as an entity. Leave the logs and edit the YAML-file again
 10.	Put the binary-sensor module in the file with the raw-data captured:
 ```
